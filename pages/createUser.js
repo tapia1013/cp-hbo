@@ -70,4 +70,3 @@ export default function CreateUser() {
     </div>
   )
 }
-// CREATE TEMPALTE LAYOUTS @ 0:12S ... npm run dev
