@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import MainLayout from '../components/Layout/MainLayout';
+import FeaturedMedia from '../components/UI/FeaturedMedia/FeaturedMedia';
 
 
 
@@ -8,9 +9,7 @@ import MainLayout from '../components/Layout/MainLayout';
 export default function HomeView() {
   return (
     <MainLayout>
-      <div>
-        HOME
-      </div>
+      <FeaturedMedia />
     </MainLayout>
   )
 }
