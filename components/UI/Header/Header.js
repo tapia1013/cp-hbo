@@ -1,3 +1,5 @@
+import Account from '../Account/Account';
+
 
 const Header = (props) => {
   return (
@@ -15,6 +17,7 @@ const Header = (props) => {
         <img className="top-header__user-img" src="https://pbs.twimg.com/profile_images/378800000519722378/c0fd8906bcfeac191dac58c00e6dcda8.jpeg" />
         <div className="top-header__user-name">Cookie</div>
       </div>
+      <Account />
     </header>
   )
 }
