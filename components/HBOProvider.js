@@ -12,11 +12,21 @@ export function useStateContext() {
 
 // create actual provider
 export function HBOProvider({ children }) {
-  // return back
+  const [user, setUser] = useState('');
+  const defaultUserImg = 'https://pbs.twimg.com/profile_images/378800000519722378/c0fd8906bcfeac191dac58c00e6dcda8.jpeg';
+
+  const createUserAction = (e) => {
+    setUser(e.target.value)
+    console.log(user);
+  }
+
+
   return (
     <StateContext.Provider
       value={{
-        test: 'test'
+        user,
+        createUserAction,
+        defaultUserImg
       }}
     >
       {children}
