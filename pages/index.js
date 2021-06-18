@@ -13,17 +13,17 @@ export default function Home() {
   // next.js router
   const router = useRouter();
 
-  useEffect(() => {
-    const loggedIn = false;
-    if (loggedIn === false) {
-      router.push('/create')
-    }
-  }, [])
+  // useEffect(() => {
+  //   const loggedIn = false;
+  //   if (loggedIn === false) {
+  //     router.push('/create')
+  //   }
+  // }, [])
 
 
   return (
     <div>
-      <Login />
+      SHOW HOMEPAGE
     </div>
   )
 }

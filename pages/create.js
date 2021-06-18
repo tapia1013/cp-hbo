@@ -26,9 +26,10 @@ export default function CreateUser() {
 
       // push user.id, user.user, user.myListID to the empty users[array]
       users.push(user);
-
       // locastorage: set key 'users' -> value of the pushed array
       ls('users', users);
+      // send user back to login
+      router.push('/login');
 
       console.log('users', users);
       console.log('lsusers', ls('users'));
