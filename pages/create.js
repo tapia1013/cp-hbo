@@ -1,12 +1,58 @@
 import Head from 'next/head'
 import { useStateContext } from '../components/HBOProvider';
-
+import ls from 'local-storage';
+import { v4 } from 'uuid';
+import { useRouter } from 'next/router';
 
 
 
 export default function CreateUser() {
   // context
   const globalState = useStateContext();
+
+  // route
+  const router = useRouter();
+
+  const saveUser = () => {
+    let users = [],
+      user;
+
+    if (ls('users') < 1) {
+      user = {
+        id: v4(),
+        user: globalState.user,
+        myListID: []
+      }
+
+      // push user.id, user.user, user.myListID to the empty users[array]
+      users.push(user);
+
+      // locastorage: set key 'users' -> value of the pushed array
+      ls('users', users);
+
+      console.log('users', users);
+      console.log('lsusers', ls('users'));
+    } else {
+      // if there was a user in the LS, the users is going to be = to current LS
+      users = ls('users')
+      user = {
+        id: v4(),
+        user: globalState.user,
+        myListID: []
+      }
+      users.push(user)
+      // assign users to be assigned new user
+      ls('users', users)
+
+      console.log('users', users);
+      console.log('lsusers', ls('users'));
+
+      // if user push route to login page
+      router.push('/login')
+    }
+
+
+  }
 
   console.log(globalState);
 
@@ -75,7 +121,10 @@ export default function CreateUser() {
 
         <div className="create-user__buttons">
           <button className="create-user__cancel">Cancel</button>
-          <button className="create-user__save">Save</button>
+          <button
+            onClick={saveUser}
+            className="create-user__save"
+          >Save</button>
         </div>
       </div>
     </div>
