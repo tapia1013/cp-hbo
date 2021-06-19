@@ -37,6 +37,14 @@
     }
   }
   
+  &__menu-btn {
+    cursor: pointer;
+  }
+  
+  &__search-btn {
+    cursor: pointer;
+  }
+  
   &__account {
     display: flex;
     justify-content: center;
