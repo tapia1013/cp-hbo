@@ -29,6 +29,7 @@ const Login = () => {
 
   console.log('declared users', users);
   const selectUser = (id) => {
+    console.log(id);
     // pass in new key to ls that were going to pass in to find out which is the active user
     ls('activeUID', id)
 
@@ -41,7 +42,7 @@ const Login = () => {
       return users.map((user) => {
         return (
           <div
-            onClick={selectUser}
+            onClick={() => selectUser(user.id)}
             className="login-user__user-box"
             key={user.id}
           >
