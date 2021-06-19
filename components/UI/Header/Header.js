@@ -2,7 +2,7 @@ import Account from '../Account/Account';
 import SearchModal from '../SearchModal/SearchModal';
 import { useStateContext } from '../../HBOProvider';
 
-
+// OPEN SEARCH MODAL 
 
 const Header = (props) => {
   const globalState = useStateContext();
@@ -17,7 +17,10 @@ const Header = (props) => {
         >
           <i className="fas fa-bars" />
         </div>
-        <div className="top-header__search-btn">
+        <div
+          className="top-header__search-btn"
+          onClick={() => globalState.setSearchOpenAction(true)}
+        >
           <i className="fas fa-search" />
         </div>
       </div>
