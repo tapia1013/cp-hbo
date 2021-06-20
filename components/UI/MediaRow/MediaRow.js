@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import {shuffleArray} from '../../utilities';
 
 
 const MediaRow = (props) => {
@@ -13,9 +13,9 @@ const MediaRow = (props) => {
 
   useEffect(() => {
     axios
-      .get('https://api.themoviedb.org/3/discover/movie?with_genres=28&primary_release_year=2021&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US')
+      .get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`)
       .then(function (response) {
-        setMoviesData(response.data.results)
+        setMoviesData(shuffleArray(response.data.results))
         setLoadingData(false);
 
 
@@ -90,7 +90,7 @@ const Skeleton = () => {
 
 
 
-
+// making media row more dynamic
 
 
 
