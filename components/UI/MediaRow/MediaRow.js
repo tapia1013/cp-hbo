@@ -1,10 +1,35 @@
 
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 
 
 const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
+  const [movies, setMoviesData] = useState([]);
+
+  // let movies = [];
+
+
+  useEffect(() => {
+    axios
+      .get('https://api.themoviedb.org/3/discover/movie?with_genres=28&primary_release_year=2021&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US')
+      .then(function (response) {
+        setMoviesData(response.data.results)
+        setLoadingData(false);
+
+
+        console.log('Success response for ' + props.title);
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('Error response for ' + props.title);
+        console.log(error);
+      })
+      .then(function () {
+
+      })
+  }, [])
 
 
   const loopComp = (comp, digit) => {
@@ -18,8 +43,12 @@ const MediaRow = (props) => {
   }
 
   const showThumbnails = () => {
-    setTimeout(() => setLoadingData(false), 5000);
-    return loadingData ? loopComp((<Skeleton />), 10) : loopComp((<Thumbnail />), 10)
+
+    return loadingData
+      ? loopComp((<Skeleton />), 10)
+      : movies.map((movie) => {
+        return <Thumbnail movieData={movie} />
+      })
   }
 
   return (
@@ -39,10 +68,10 @@ const MediaRow = (props) => {
 }
 
 
-const Thumbnail = () => {
+const Thumbnail = (props) => {
   return (
     <div className="media-row__thumbnail">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" />
+      <img src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} />
       <div className="media-row__top-layer">
         <i className="fas fa-play" />
       </div>
