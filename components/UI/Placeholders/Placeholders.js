@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import {shuffleArray} from '../../utilities';
 
 
-const Placeholder = (props) => {
+const Placeholders = (props) => {
   const [loadingData, setLoadingData] = useState(true);
   const [movies, setMoviesData] = useState([]);
 
@@ -47,4 +47,4 @@ const Placeholder = (props) => {
 
 
 
-export default Placeholder;
+export default Placeholders;
