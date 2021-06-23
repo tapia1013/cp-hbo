@@ -1,58 +1,87 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 const CastInfo = (props) => {
+  const [loadingData, setLoadingData] = useState(true);
+  const [credits, setCredits] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${props.mediaId}/credits?api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
+      )
+      .then(function (response) {
+        setCredits(response.data)
+        setLoadingData(false);
+
+
+        console.log('Success response for cast and crew');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('Error response for cast and crew');
+        console.log(error);
+      })
+      .then(function () {
+
+      })
+  }, [])
+
+
+  const showCast = () => {
+    if (loadingData !== true) {
+      return credits.cast.map((item) => {
+        return (
+          <ul className="cast-info__crew">
+            <li>
+              {item.character}
+            </li>
+            <li>
+              {item.name}
+            </li>
+          </ul>
+        )
+      })
+    } else {
+      return (<div>Loading Cast</div>)
+    }
+  }
+
+
+  const showCrew = () => {
+    if (loadingData !== true) {
+      return credits.crew.map((item) => {
+        return (
+          <ul className="cast-info__crew">
+            <li>
+              {item.job}
+            </li>
+            <li>
+              {item.name}
+            </li>
+          </ul>
+        )
+      })
+    } else {
+      return (<div>Loading Crew</div>)
+    }
+  }
+
   return (
     <div className="cast-info">
       <div className="cast-info__group-title">
-        Cast & Crews
+        Cast
       </div>
       <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>
-            James
-          </li>
-          <li>
-            George Lucus
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Billy
-          </li>
-          <li>
-            George Lucus
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Vee
-          </li>
-          <li>
-            Cookie
-          </li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>
-            Nye
-          </li>
-          <li>
-            Vicky
-          </li>
-        </ul>
+        {showCast()}
       </div>
 
       <div className="cast-info__group-title">
-        Directors
+        Crew
       </div>
       <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>
-            Vicky
-          </li>
-          <li>
-            Jay
-          </li>
-        </ul>
-
+        {showCrew()}
       </div>
     </div>
   )
