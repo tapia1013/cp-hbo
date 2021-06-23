@@ -1,10 +1,3 @@
-/**
- * 
- * 
- * Create an indivdual Movie Page
- * 
- */
-
 
 
 const FeaturedMedia = (props) => {
@@ -14,17 +7,30 @@ const FeaturedMedia = (props) => {
   }
 
 
+  const showMedia = () => {
+    if (props.type == 'front') {
+      return (
+        <iframe
+          className="featured-media__video"
+          width="100%"
+          height="100%"
+          src={props.mediaUrl}
+          allow="accelerometer; autoplay; clipboard-write;encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      )
+    } else {
+      return (
+        <img src={props.mediaUrl} className="featured-media__img" />
+      )
+    }
+  }
+
+
 
   return (
     <div className="featured-media">
-      <iframe
-        className="featured-media__video"
-        width="100%"
-        height="100%"
-        src={props.videoUrl}
-        allow="accelerometer; autoplay; clipboard-write;encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      {showMedia()}
       <div className="featured-media__bg">
         <div className="featured-media__container">
           <div className="featured-media__title" onClick={clickedPlay}>{props.title}</div>
