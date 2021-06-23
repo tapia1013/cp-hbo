@@ -24,7 +24,7 @@ export default function Home() {
         mediaUrl="https://www.youtube.com/embed/QJHY4ggYCk4?autoplay=1&loop=1&start=12"
         title="Mortal Kombat"
         location="In Theaters and on HBO MAX. Streaming through May 23."
-        linkUrl="/movies/id"
+        linkUrl="/movie/460465"
         type="front"
       />
       <LazyLoad
