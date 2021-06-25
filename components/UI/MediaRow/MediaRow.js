@@ -47,7 +47,7 @@ const MediaRow = (props) => {
     return loadingData
       ? loopComp((<Skeleton />), 10)
       : movies.map((movie) => {
-        return <Thumbnail movieData={movie} type={type} />
+        return <Thumbnail mediaType={props.mediaType} movieData={movie} type={type} />
       })
   }
 
@@ -88,7 +88,7 @@ const Thumbnail = (props) => {
 
 
   return (
-    <Link href={`/movie/${props.movieData.id}`}>
+    <Link href={`/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.movieData.id}`}>
       <a>
         <div className="media-row__thumbnail">
           <img src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}${props.movieData.poster_path}`} />
@@ -110,7 +110,9 @@ const Skeleton = () => {
   )
 }
 
-
+MediaRow.defaultProps = {
+  mediaType: 'movie'
+}
 
 
 export default MediaRow;

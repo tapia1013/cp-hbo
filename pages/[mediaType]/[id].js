@@ -19,18 +19,18 @@ export default function SingleMediaPage(props) {
   // const { id } = router.query;
 
   console.log(props);
-  useEffect(() => {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${props.query.id}?&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`)
-      .then(function (response) {
-        setMediaData(response.data)
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log('Error response for ');
-        console.log(error);
-      })
-  }, [mediaData])
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://api.themoviedb.org/3/movie/${props.query.id}?&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`)
+  //     .then(function (response) {
+  //       setMediaData(response.data)
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log('Error response for ');
+  //       console.log(error);
+  //     })
+  // }, [mediaData])
 
 
 
@@ -39,8 +39,8 @@ export default function SingleMediaPage(props) {
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia
-        title={mediaData.title}
-        mediaUrl={`https://image.tmdb.org/t/p/w1280${mediaData.backdrop_path}`}
+        title={props.query.mediaType === 'movie' ? props.mediaData.title : props.mediaData.name}
+        mediaUrl={`https://image.tmdb.org/t/p/w1280${props.mediaData.backdrop_path}`}
         location="In Theaters and on HBO MAX. Streaming through May 23."
         linkUrl="/movies/id"
         type="single"
@@ -52,11 +52,13 @@ export default function SingleMediaPage(props) {
         <MediaRow
           title="Similar To This"
           type="small-v"
-          endpoint={`movie/${props.query.id}/similar?`}
+          mediaType={props.query.mediaType}
+          endpoint={`${props.query.mediaType === 'movie' ? 'movie' : 'tv'}/${props.query.id}/similar?`}
         />
       </LazyLoad>
       <CastInfo
         mediaId={props.query.id}
+        mediaType={props.mediaType}
       />
     </MainLayout>
   )
@@ -65,8 +67,17 @@ export default function SingleMediaPage(props) {
 
 
 export async function getServerSideProps(context) {
+  let mediaData;
+  try {
+    mediaData = await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`)
+  } catch (error) {
+    console.log(error);
+  }
   return {
-    props: { query: context.query },
+    props: {
+      mediaData: mediaData.data,
+      query: context.query
+    },
   }
 }
 
