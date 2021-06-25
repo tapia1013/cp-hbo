@@ -26,7 +26,6 @@ const SearchModal = (props) => {
           className="search-modal__input"
           type="text"
           placeholder="search for a title"
-          value=""
         />
         <div
           className="search-modal__close-btn"
@@ -43,14 +42,12 @@ const SearchModal = (props) => {
 
 
       <div className="search-modal__thumbnails">
-        {loopComp(
-          (<div className="search-modal__thumbnail">
-            <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" />
-            <div className="search-modal__top-layer">
-              <i className="fas fa-play" />
-            </div>
-          </div>), 10
-        )}
+        <div className="search-modal__thumbnail">
+          <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" />
+          <div className="search-modal__top-layer">
+            <i className="fas fa-play" />
+          </div>
+        </div>
       </div>
     </div>
   )
