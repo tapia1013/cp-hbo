@@ -58,7 +58,7 @@ export default function SingleMediaPage(props) {
       </LazyLoad>
       <CastInfo
         mediaId={props.query.id}
-        mediaType={props.mediaType}
+        mediaType={props.query.mediaType}
       />
     </MainLayout>
   )
