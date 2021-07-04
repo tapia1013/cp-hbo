@@ -23,7 +23,7 @@ export default function MediaTypePage(props) {
       <FeaturedMedia
         mediaUrl={`https://image.tmdb.org/t/p/w1280${props.featuredData.backdrop_path}`}
         title={props.query.mediaType === 'movie' ? props.featuredData.title : props.featuredData.name}
-        linkUrl={`/${props.query.mediaType}/460465`}
+        linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
         type="single"
       />
       <GenreNav

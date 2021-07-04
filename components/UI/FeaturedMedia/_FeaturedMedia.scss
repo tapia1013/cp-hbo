@@ -7,6 +7,12 @@
   overflow: hidden;
   
   
+  &--single {
+    min-height: 500px;
+    height: 50vh;
+  }
+  
+  
   &__video {
     position: absolute;
     z-index: 1;
