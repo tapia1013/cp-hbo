@@ -88,3 +88,14 @@ const CastInfo = (props) => {
 }
 
 export default CastInfo;
+
+
+
+
+
+
+
+
+// CREATE A GENRE PAGE FOR TV AND MOVIES
+
+
