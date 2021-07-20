@@ -104,4 +104,4 @@ export default CastInfo;
 
 // CREATE A GENRE PAGE FOR TV AND MOVIES
 
-// begin genre
+// begin genre and tv movies
