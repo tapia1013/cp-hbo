@@ -8,9 +8,6 @@ const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
   const [movies, setMoviesData] = useState([]);
 
-  // let movies = [];
-
-
   useEffect(() => {
     axios
       .get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`)
@@ -18,16 +15,12 @@ const MediaRow = (props) => {
         setMoviesData(shuffleArray(response.data.results))
         setLoadingData(false);
 
-
         console.log('Success response for ' + props.title);
         console.log(response);
       })
       .catch(function (error) {
         console.log('Error response for ' + props.title);
         console.log(error);
-      })
-      .then(function () {
-
       })
   }, [])
 

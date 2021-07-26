@@ -20,7 +20,7 @@ export default function MediaTypePage(props) {
 
   const showRandomMedia = () => {
     let thumbType;
-    return props.genresData.map((item) => {
+    return props.genresData.map((item, index) => {
       thumbType = shuffleArray(globalState.thumbTypes)[0]
 
       return (
@@ -32,7 +32,7 @@ export default function MediaTypePage(props) {
             <MediaRow
               title={item.name}
               type={thumbType}
-              endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`}
+              endpoint={`discover/${props.query.mediaType}?with_genres=${props.query.genre_id}&sort_by=popularity.desc&primary_release_year=2021&page=${index + 1}`}
             />
           </LazyLoad>
         </div>

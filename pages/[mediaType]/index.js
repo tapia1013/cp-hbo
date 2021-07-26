@@ -51,7 +51,7 @@ export default function MediaTypePage(props) {
         type="single"
       />
       <GenreNav
-        mediaType={props.query.MediaType}
+        mediaType={props.query.mediaType}
         genresData={props.genresData}
       />
 
