@@ -8,7 +8,7 @@ const GenreNav = (props) => {
 
   const [activeNav, setActiveNav] = useState(false)
 
-  setTimeout(() => setActiveNav(true), 200)
+  setTimeout(() => setActiveNav(true), 100)
 
 
   return (

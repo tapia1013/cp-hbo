@@ -40,7 +40,7 @@ export default function MediaTypePage(props) {
     })
   }
 
-
+  console.log('props index', `/${props.query.mediaType}/${props.featuredData.id}`);
 
   return AuthCheck(
     <MainLayout>
@@ -67,12 +67,11 @@ export async function getServerSideProps(context) {
   let featuredData;
 
   try {
-
     genresData = await axios.get(
-      `https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
+      `https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
     );
     featuredData = await axios.get(
-      `https://api.themoviedb.org/3/discover/${context.query.mediaType}/?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
+      `https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
     );
     console.log("genresData");
     console.log(genresData.data);
@@ -88,7 +87,7 @@ export async function getServerSideProps(context) {
     props: {
       genresData: genresData.data.genres,
       featuredData: shuffleArray(featuredData.data.results)[0],
-      query: context.query
+      query: context.query,
     }
   }
 }

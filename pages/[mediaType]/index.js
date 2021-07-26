@@ -56,6 +56,8 @@ export default function MediaTypePage(props) {
       />
 
       {showRandomMedia()}
+
+
     </MainLayout>
   )
 }
@@ -67,9 +69,8 @@ export async function getServerSideProps(context) {
   let featuredData;
 
   try {
-
     genresData = await axios.get(
-      `https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
+      `https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
     );
     featuredData = await axios.get(
       `https://api.themoviedb.org/3/discover/${context.query.mediaType}/?primary_release_year=2021&api_key=c1b0e735ad3ff470f44fa29c9a1e6189&language=en-US`
