@@ -26,7 +26,7 @@ const CastInfo = (props) => {
       .then(function () {
 
       })
-  }, [])
+  }, [props.updateData])
 
 
   const showCast = () => {

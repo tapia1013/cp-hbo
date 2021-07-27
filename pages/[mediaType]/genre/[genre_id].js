@@ -30,6 +30,7 @@ export default function MediaTypePage(props) {
             placeholder={<Placeholders title={item.name} type={thumbType} />}
           >
             <MediaRow
+              updateData={props.query.genre_id}
               title={item.name}
               type={thumbType}
               endpoint={`discover/${props.query.mediaType}?with_genres=${props.query.genre_id}&sort_by=popularity.desc&primary_release_year=2021&page=${index + 1}`}
@@ -47,6 +48,7 @@ export default function MediaTypePage(props) {
       <FeaturedMedia
         mediaUrl={`https://image.tmdb.org/t/p/w1280${props.featuredData.backdrop_path}`}
         title={props.query.mediaType === 'movie' ? props.featuredData.title : props.featuredData.name}
+
         linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
         type="single"
       />
@@ -91,6 +93,18 @@ export async function getServerSideProps(context) {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

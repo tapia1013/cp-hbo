@@ -50,6 +50,7 @@ export default function SingleMediaPage(props) {
         placeholder={<Placeholders title="Movies" type="large-v" />}
       >
         <MediaRow
+          updateData={props.query.id}
           title="Similar To This"
           type="small-v"
           mediaType={props.query.mediaType}
@@ -59,6 +60,7 @@ export default function SingleMediaPage(props) {
       <CastInfo
         mediaId={props.query.id}
         mediaType={props.query.mediaType}
+        updateData={props.query.id}
       />
     </MainLayout>
   )

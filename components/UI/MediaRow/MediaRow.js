@@ -22,7 +22,7 @@ const MediaRow = (props) => {
         console.log('Error response for ' + props.title);
         console.log(error);
       })
-  }, [])
+  }, [props.updateData])
 
 
   const loopComp = (comp, digit) => {

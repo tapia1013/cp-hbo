@@ -1,5 +1,5 @@
 import { useStateContext } from '../../HBOProvider';
-
+import { useEffect } from 'react';
 
 
 const SearchModal = (props) => {
@@ -14,7 +14,16 @@ const SearchModal = (props) => {
     }
 
     return thumbnails;
-  }
+  };
+
+
+  useEffect(() => {
+    if (globalState.searchOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [globalState.searchOpen])
 
 
   return (

@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 const GenreNav = (props) => {
   // const globalState = useStateContext();
-
   const [activeNav, setActiveNav] = useState(false)
 
   setTimeout(() => setActiveNav(true), 100)
@@ -29,15 +28,14 @@ const GenreList = (props) => {
   return props.genresData.map((item) => {
     return (
       <li key={item.id}>
-        <a href={`/${props.mediaType}/genre/${item.id}`}>
-          {item.name}
-        </a>
+        <Link href={`/${props.mediaType}/genre/${item.id}`}>
+          <a>
+            {item.name}
+          </a>
+        </Link>
       </li>
     )
   })
 }
-
-
-
 
 export default GenreNav;
