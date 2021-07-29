@@ -3,9 +3,6 @@ import { useStateContext } from '../components/HBOProvider';
 import { useRouter } from 'next/router'
 import MainLayout from '../components/Layout/MainLayout';
 import FeaturedMedia from '../components/UI/FeaturedMedia/FeaturedMedia';
-// import ForYouList from '../components/UI/ForYouList/ForYouList';
-// import JustAdded from '../components/UI/JustAdded/JustAdded';
-// import PosterView from '../components/UI/PosterView/PosterView';
 import MediaRow from '../components/UI/MediaRow/MediaRow';
 import AuthCheck from '../components/AuthCheck';
 import LazyLoad from 'react-lazyload';
@@ -26,6 +23,8 @@ export default function Home() {
         location="In Theaters and on HBO MAX. Streaming through May 23."
         linkUrl="/movie/460465"
         type="front"
+        mediaType={'movie'}
+        mediaId={460465}
       />
       <LazyLoad
         offset={-400}

@@ -178,4 +178,3 @@ export default SearchModal;
 
 
 
-// video 30 Add watchlist feature
